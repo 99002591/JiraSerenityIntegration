@@ -1,6 +1,7 @@
 #Author: Amit Das
 #
 #
+@issue:SJI-3
 Feature: Login with UI
 
   #
@@ -53,14 +54,14 @@ Feature: Login with UI
   #      | once  | visibility       | fadr_support_admin@eaton.com | qwert_9877@BH |
   #      | twice | visibility_off   | fadr_support_admin@eaton.com | qwert_9877@BH |
   #
-  @issue:ISSUE-SJI-4
-  @UI
-  Scenario: Forgot password
-  Given User navigates to login page
-  When Forgot password link is clicked
-  Then Redirect to Forgot password page
-  
-  @issue:ISSUE-SJI-4 @UI
+#  @issue:ISSUE-SJI-4
+#  @UI
+#  Scenario: Forgot password
+#  Given User navigates to login page
+#  When Forgot password link is clicked
+#  Then Redirect to Forgot password page
+#  
+  @issue:SJI-4 @UI
   Scenario: Contact EATON support
     Given User navigates to login page
     When Contact EATON support representative link is clicked
