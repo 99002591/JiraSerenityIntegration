@@ -42,18 +42,18 @@ Feature: Login with UI
   #      | Login with blank email              |                              | valid@123 | E-mail is required                      |
   #      | Login with blank email and password |                              |           | E-mail is required,Password is required |
   #  @issue: #4
-  #  @UI
-  #  Scenario Outline: Password masking and unmasking
-  #    Given User navigates to login page
-  #     When Enter "<email>" and "<password>"
-  #     When Eye button is clicked "<times>"
-  #     Then Password should be "<visibility>"
-  #
-  #    Examples:
-  #      | times | visibility       | email                        | password      |
-  #      | once  | visibility       | fadr_support_admin@eaton.com | qwert_9877@BH |
-  #      | twice | visibility_off   | fadr_support_admin@eaton.com | qwert_9877@BH |
-  #
+    @UI
+    Scenario Outline: Password masking and unmasking
+      Given User navigates to login page
+       When Enter "<email>" and "<password>"
+       When Eye button is clicked "<times>"
+       Then Password should be "<visibility>"
+  
+      Examples:
+        | times | visibility       | email                        | password      |
+        | once  | visibility       | fadr_support_admin@eaton.com | qwert_9877@BH |
+        | twice | visibility_off   | fadr_support_admin@eaton.com | qwert_9877@BH |
+#
 #  @issue:ISSUE-SJI-4
 #  @UI
 #  Scenario: Forgot password
@@ -61,7 +61,8 @@ Feature: Login with UI
 #  When Forgot password link is clicked
 #  Then Redirect to Forgot password page
 #  
-  @issue:SJI-4 @UI
+#  @issue:SJI-4 
+  @UI
   Scenario: Contact EATON support
     Given User navigates to login page
     When Contact EATON support representative link is clicked
