@@ -1,17 +1,17 @@
 package listeners;
 import java.util.Map;
 
+import jiraAPIhandlers.authenticator;
 import net.thucydides.core.model.DataTable;
 import net.thucydides.core.model.Story;
 import net.thucydides.core.model.TestOutcome;
 import net.thucydides.core.steps.*;
-import net.serenitybdd.core.*;
-import net.serenitybdd.rest.SerenityRest;
 public class ListenAndTrigger implements StepListener{
+	authenticator auth_obj = new authenticator();
 	
 	@Override
 	public void testSuiteStarted(Class<?> storyClass) {
-		System.out.println("testSuiteStarted" + storyClass);
+		System.out.println("testSuiteStarted: " + storyClass);
 	}
 
 	@Override
@@ -23,19 +23,19 @@ public class ListenAndTrigger implements StepListener{
 	@Override
 	public void testStarted(String description) {
 		// TODO Auto-generated method stub
-		System.out.println("testStarted" + description);
+		System.out.println("testStarted: " + description);
 	}
 
 	@Override
 	public void testStarted(String description, String id) {
 		// TODO Auto-generated method stub
-		System.out.println("testStarted" + description + "id" + id);
+		System.out.println("testStarted----> " + description + "  id---->" + id);
 	}
 
 	@Override
 	public void testFinished(TestOutcome result) {
 		// TODO Auto-generated method stub
-		System.out.println("testFinished" + result);
+		System.out.println("testFinished: " + result);
 	}
 
 	@Override
@@ -47,25 +47,25 @@ public class ListenAndTrigger implements StepListener{
 	@Override
 	public void stepStarted(ExecutedStepDescription description) {
 		// TODO Auto-generated method stub
-		System.out.println("stepStarted" + description);
+		System.out.println("stepStarted: " + description);
 	}
 
 	@Override
 	public void skippedStepStarted(ExecutedStepDescription description) {
 		// TODO Auto-generated method stub
-		System.out.println("skippedStepStarted" + description);
+		System.out.println("skippedStepStarted: " + description);
 	}
 
 	@Override
 	public void stepFailed(StepFailure failure) {
 		// TODO Auto-generated method stub
-		System.out.println("stepFailed" + failure);
+		System.out.println("stepFailed: " + failure);
 	}
 
 	@Override
 	public void lastStepFailed(StepFailure failure) {
 		// TODO Auto-generated method stub
-		System.out.println("lastStepFailed" + failure);
+		System.out.println("lastStepFailed----> " + failure);
 	}
 
 	@Override
@@ -83,7 +83,7 @@ public class ListenAndTrigger implements StepListener{
 	@Override
 	public void stepPending(String message) {
 		// TODO Auto-generated method stub
-		System.out.println("stepPending message" + message);
+		System.out.println("stepPending message: " + message);
 	}
 
 	@Override
@@ -95,7 +95,7 @@ public class ListenAndTrigger implements StepListener{
 	@Override
 	public void testFailed(TestOutcome testOutcome, Throwable cause) {
 		// TODO Auto-generated method stub
-		System.out.println("testFailed" + "testOutcome" + testOutcome + "cause" + cause);
+		System.out.println("testFailed" + "testOutcome----> " + testOutcome + "    cause------> " + cause);
 	}
 
 	@Override
@@ -125,28 +125,30 @@ public class ListenAndTrigger implements StepListener{
 	@Override
 	public void notifyScreenChange() {
 		// TODO Auto-generated method stub
-		System.out.println("notifyScreenChange");
+		System.out.println("notifyScreenChange: ");
 	}
 
 	@Override
 	public void useExamplesFrom(DataTable table) {
 		// TODO Auto-generated method stub
-		System.out.println("useExamplesFrom" + table);
+		System.out.println("useExamplesFrom: " + table);
 	}
 
 	@Override
 	public void addNewExamplesFrom(DataTable table) {
 		// TODO Auto-generated method stub
-		System.out.println("addNewExamplesFrom" + table);
+		System.out.println("addNewExamplesFrom: " + table);
 	}
 
 	@Override
 	public void exampleStarted(Map<String, String> data) {
 		// TODO Auto-generated method stub
-		System.out.println("exampleStarted--------" + data);
+		System.out.println("exampleStarted-------->" + data);
+		auth_obj.addComment("SJI-4");
 		//dummy-jira-integration.atlassian.net/rest/api/2/issue/SJI-4/comment
-		//1w1pJRPdJdZnmTHF5yE0CACE
-		SerenityRest.given().contentType("application/json").auth().oauth2("1w1pJRPdJdZnmTHF5yE0CACE").body("jsonComment.json").post("dummy-jira-integration.atlassian.net/rest/api/2/issue/SJI-4/comment");
+//		SerenityRest.given().contentType("application/json").body(data).post("dummy-jira-integration.atlassian.net/rest/api/2/issue/SJI-4/comment");
+		
+		
 	}
 
 	@Override
@@ -158,7 +160,7 @@ public class ListenAndTrigger implements StepListener{
 	@Override
 	public void assumptionViolated(String message) {
 		// TODO Auto-generated method stub
-		System.out.println("assumptionViolated" + message);
+		System.out.println("assumptionViolated: " + message);
 	}
 
 	@Override
@@ -170,6 +172,6 @@ public class ListenAndTrigger implements StepListener{
 	@Override
 	public void testSuiteStarted(Story story) {
 		// TODO Auto-generated method stub
-		System.out.println("testSuiteStarted story" + story);
+		System.out.println("testSuiteStarted story: " + story);
 	}
 }
