@@ -44,9 +44,6 @@ public class authenticator {
 		System.out.println(
 				"*********************        COMMENT CONVERTED TO JSON FORMAT         ************************");
 		requestSetUp();
-
-//		Response response = given().spec(requestSpec).pathParam("IssueKey", issueKey)
-//				.contentType(ContentType.JSON).body(json_comment).when().post(endpoint);
 		String response = given().spec(requestSpec).contentType(ContentType.JSON).body(json_comment).when()
 				.post("https://dummy-jira-integration.atlassian.net/rest/api/2/issue/SJI-4/comment").then().extract().body()
 				.asString();
